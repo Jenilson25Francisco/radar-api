@@ -15,12 +15,11 @@ public class createPessoaService {
     private final AnuncioRepository anuncioRepository;
 
     @Transactional
-    public Pessoa anunciar(Long pessoaId  ,String descricao){
+    public Pessoa anunciar(Long pessoaId  ,Pessoa pessoa){
 
-        Anuncio pessoa = anuncioRepository.findById(pessoaId)
-                .orElseThrow(() -> new NegocioException("pessoa não encontrada"));
 
-        return  pessoa.adicionarPessoas(descricao);
+
+        return null; //pessoa.adicionarPessoas(descricao);
 
     }
 

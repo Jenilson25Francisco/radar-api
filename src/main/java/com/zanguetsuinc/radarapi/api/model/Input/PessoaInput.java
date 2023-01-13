@@ -15,8 +15,6 @@ public class PessoaInput {
     @Size(max = 3)
     private Integer idade;
     @NotBlank
-    @Size(max = 1000)
     private String descricao;
-    private String imageUrl;
 
 }

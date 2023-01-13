@@ -1,31 +1,32 @@
 package com.zanguetsuinc.radarapi.domain.service;
 
-import com.zanguetsuinc.radarapi.domain.model.File;
-import com.zanguetsuinc.radarapi.domain.repository.PessoaRepository;
+import com.zanguetsuinc.radarapi.domain.model.FotoPessoa;
+import com.zanguetsuinc.radarapi.domain.repository.FotoPessoaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Optional;
+import java.io.IOException;
 
 @Service
 @AllArgsConstructor
 public class CatalogoFotoPessoaService {
 
-   /*
-   *
-   *  private PessoaRepository pessoaRepository;
+    private FotoPessoaRepository fotoPessoaRepository;
 
-    @Transactional
-    public File salvar(File file){
+    public void uploadFoto(MultipartFile file) {
 
-        Long pessoaId = file.getPessoa().getId();
+        FotoPessoa fotoPessoa = new FotoPessoa();
 
-        Optional<File> existeFoto =
+        try {
 
-        ;
+            fotoPessoa.setDadosFoto(file.getBytes());
+            fotoPessoa.setTipoFoto(file.getContentType());
+            fotoPessoa.setNomeFoto(file.getOriginalFilename());
+            fotoPessoaRepository.save(fotoPessoa);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-   *
-   * */
-
 }

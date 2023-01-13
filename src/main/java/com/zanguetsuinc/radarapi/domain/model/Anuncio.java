@@ -22,20 +22,9 @@ public class Anuncio {
     private OffsetDateTime dataAnuncio;
     @ManyToOne
     private Users user;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private List<Pessoa> pessoas = new ArrayList<>();
+    @ManyToOne
+    private Pessoa pessoa;
     @Embedded
     private Endereco endereco;
 
-    public Pessoa adicionarPessoas(String descricao) {
-
-        Pessoa pessoa = new Pessoa();
-        pessoa.setStatus(StatusPessoa.DESAPARECIDA);
-        pessoa.setAnuncio(this);
-
-        this.getPessoas().add(pessoa);
-
-        return pessoa;
-
-    }
 }
